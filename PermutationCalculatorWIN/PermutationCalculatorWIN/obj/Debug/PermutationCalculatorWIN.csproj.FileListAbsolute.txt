@@ -1,0 +1,10 @@
+C:\Users\Iris\OneDrive\Documents\Info\Info\11th grade\PermutationCalculator\PermutationCalculatorWIN\PermutationCalculatorWIN\bin\Debug\PermutationCalculatorWIN.exe.config
+C:\Users\Iris\OneDrive\Documents\Info\Info\11th grade\PermutationCalculator\PermutationCalculatorWIN\PermutationCalculatorWIN\bin\Debug\PermutationCalculatorWIN.exe
+C:\Users\Iris\OneDrive\Documents\Info\Info\11th grade\PermutationCalculator\PermutationCalculatorWIN\PermutationCalculatorWIN\bin\Debug\PermutationCalculatorWIN.pdb
+C:\Users\Iris\OneDrive\Documents\Info\Info\11th grade\PermutationCalculator\PermutationCalculatorWIN\PermutationCalculatorWIN\obj\Debug\PermutationCalculatorWIN.csproj.AssemblyReference.cache
+C:\Users\Iris\OneDrive\Documents\Info\Info\11th grade\PermutationCalculator\PermutationCalculatorWIN\PermutationCalculatorWIN\obj\Debug\PermutationCalculatorWIN.Form1.resources
+C:\Users\Iris\OneDrive\Documents\Info\Info\11th grade\PermutationCalculator\PermutationCalculatorWIN\PermutationCalculatorWIN\obj\Debug\PermutationCalculatorWIN.Properties.Resources.resources
+C:\Users\Iris\OneDrive\Documents\Info\Info\11th grade\PermutationCalculator\PermutationCalculatorWIN\PermutationCalculatorWIN\obj\Debug\PermutationCalculatorWIN.csproj.GenerateResource.cache
+C:\Users\Iris\OneDrive\Documents\Info\Info\11th grade\PermutationCalculator\PermutationCalculatorWIN\PermutationCalculatorWIN\obj\Debug\PermutationCalculatorWIN.csproj.CoreCompileInputs.cache
+C:\Users\Iris\OneDrive\Documents\Info\Info\11th grade\PermutationCalculator\PermutationCalculatorWIN\PermutationCalculatorWIN\obj\Debug\PermutationCalculatorWIN.exe
+C:\Users\Iris\OneDrive\Documents\Info\Info\11th grade\PermutationCalculator\PermutationCalculatorWIN\PermutationCalculatorWIN\obj\Debug\PermutationCalculatorWIN.pdb
