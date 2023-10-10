@@ -18,10 +18,10 @@ namespace PermutationCalculatorWIN
             InitializeComponent();
         }
 
+        int n;
         private void calculator_bttn_Click(object sender, EventArgs e)
         {
             //get data:
-            int n = int.Parse(n_txtBox.Text);
             int[,] a = new int[2, n];
             int[,] b = new int[2, n];
             int[,] result = new int[2, n];
@@ -50,14 +50,14 @@ namespace PermutationCalculatorWIN
             GenerateFirstLine(perm, n);
             
             int newLineIndex = input.IndexOf('\n');
-            if (newLineIndex != -1)
+            if (newLineIndex == -1)
+                return;
+
+            int j = 0;
+            for (int k = newLineIndex + 1; k < input.Length; k += 2)
             {
-                int j = 0;
-                for (int k = newLineIndex + 1; k < input.Length; k+=2)
-                {
-                    perm[1, j] = input[k] - '0';
-                    j++;
-                }
+                perm[1, j] = input[k] - '0';
+                j++;
             }
         }
 
@@ -79,7 +79,6 @@ namespace PermutationCalculatorWIN
 
         private void OutputPerm(int[,] result, int n)
         {
-            result_lbl.Text = GenerateFirstLine(n);
             for (int i = 0; i < n; i++)
             {
                 result_lbl.Text += result[1, i] + " ";
@@ -87,16 +86,85 @@ namespace PermutationCalculatorWIN
         }
 
         //!can get rid of later!
-        private void printPerm(int[,] perm)
+        //private void printPerm(int[,] perm)
+        //{
+        //    for (int i = 0; i <  perm.GetLength(0); i++)
+        //    {
+        //        for (int j = 0; j < perm.GetLength(1); j++)
+        //        {
+        //            Debug.Write(perm[i, j] + " ");
+        //        }
+        //        Debug.Write("\n");
+        //    }
+        //}
+
+        private void n_txtBox_TextChanged(object sender, EventArgs e)
         {
-            for (int i = 0; i <  perm.GetLength(0); i++)
+            if (n_txtBox.Text != string.Empty)
             {
-                for (int j = 0; j < perm.GetLength(1); j++)
-                {
-                    Debug.Write(perm[i, j] + " ");
-                }
-                Debug.Write("\n");
+                n = int.Parse(n_txtBox.Text);
+                //Generate the first lines of the permutations:
+                perm1_txtBox.Text = GenerateFirstLine(n);
+                perm2_txtBox.Text = GenerateFirstLine(n);
+                result_lbl.Text = GenerateFirstLine(n);
+
+                //Scale textboxes:
+                ScaleTextBox(perm1_txtBox, n);
+                ScaleTextBox(perm2_txtBox, n);
+                ScaleTextBox(result_lbl, n);
+
+                //Adjust right bracket positions, depending on size of textbox
+                MoveRightBracket(rightBrackets, perm1_txtBox);
+                MoveRightBracket(rightBrackets2, perm2_txtBox);
+                MoveRightBracket(resultRightBrackets, result_lbl);
             }
+        }
+
+        private void ScaleTextBox(TextBox tb, int n)
+        {
+            int offset = 0;
+            if (n >= 10)
+            {
+                n++;
+                offset = 12;
+            }
+            else
+            {
+                offset = 8;
+            }
+
+            Font font = tb.Font;
+            float fontSize = font.Size;
+            tb.Size = new Size((int)Math.Round(fontSize * (n)) + offset, tb.Size.Height);
+
+            SetMaxLength(tb);
+        }
+
+        private void ScaleTextBox(Label lbl, int n)
+        {
+            Font font = lbl.Font;
+            float fontSize = font.Size;
+
+            lbl.Size = new Size((int)fontSize * n, lbl.Size.Height);
+        }
+
+        private void MoveRightBracket(Label bracket, TextBox tb)
+        {
+            bracket.Location = new Point(tb.Location.X + tb.Width, bracket.Location.Y);
+        }
+
+        private void MoveRightBracket(Label bracket, Label lbl)
+        {
+            bracket.Location = new Point(lbl.Location.X + lbl.Width - 15, bracket.Location.Y);
+        }
+
+        //sets the maximum length of the textbox depending on the length of the permutation
+        //in order to avoid a longer input on the 2nd line
+        private void SetMaxLength(TextBox tb)
+        {
+            int spaceCount = n * 2 - 1;
+            int digitCount = n * 2;
+            tb.MaxLength = spaceCount + digitCount + 1; //+1 for the new line char
         }
     }
 }

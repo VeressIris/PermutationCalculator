@@ -36,13 +36,13 @@
             this.leftBrackets = new System.Windows.Forms.Label();
             this.leftBrackets2 = new System.Windows.Forms.Label();
             this.rightBrackets2 = new System.Windows.Forms.Label();
-            this.rightBrackets = new System.Windows.Forms.Label();
             this.resultLetter_lbl = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.resultRightBrackets = new System.Windows.Forms.Label();
             this.n_txtBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.result_lbl = new System.Windows.Forms.Label();
+            this.rightBrackets = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // calculator_bttn
@@ -64,7 +64,7 @@
             this.perm1_txtBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.perm1_txtBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.perm1_txtBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.perm1_txtBox.Location = new System.Drawing.Point(98, 71);
+            this.perm1_txtBox.Location = new System.Drawing.Point(95, 71);
             this.perm1_txtBox.Multiline = true;
             this.perm1_txtBox.Name = "perm1_txtBox";
             this.perm1_txtBox.Size = new System.Drawing.Size(112, 85);
@@ -141,17 +141,6 @@
             this.rightBrackets2.TabIndex = 4;
             this.rightBrackets2.Text = "⎤\r\n⎦\r\n";
             // 
-            // rightBrackets
-            // 
-            this.rightBrackets.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.rightBrackets.AutoSize = true;
-            this.rightBrackets.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rightBrackets.Location = new System.Drawing.Point(208, 55);
-            this.rightBrackets.Name = "rightBrackets";
-            this.rightBrackets.Size = new System.Drawing.Size(36, 110);
-            this.rightBrackets.TabIndex = 4;
-            this.rightBrackets.Text = "⎤\r\n⎦\r\n";
-            // 
             // resultLetter_lbl
             // 
             this.resultLetter_lbl.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -174,16 +163,16 @@
             this.label4.TabIndex = 4;
             this.label4.Text = "⎡\r\n⎣";
             // 
-            // label5
+            // resultRightBrackets
             // 
-            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(196, 201);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(36, 110);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "⎤\r\n⎦\r\n";
+            this.resultRightBrackets.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.resultRightBrackets.AutoSize = true;
+            this.resultRightBrackets.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.resultRightBrackets.Location = new System.Drawing.Point(196, 201);
+            this.resultRightBrackets.Name = "resultRightBrackets";
+            this.resultRightBrackets.Size = new System.Drawing.Size(36, 110);
+            this.resultRightBrackets.TabIndex = 4;
+            this.resultRightBrackets.Text = "⎤\r\n⎦\r\n";
             // 
             // n_txtBox
             // 
@@ -192,6 +181,7 @@
             this.n_txtBox.Name = "n_txtBox";
             this.n_txtBox.Size = new System.Drawing.Size(100, 44);
             this.n_txtBox.TabIndex = 5;
+            this.n_txtBox.TextChanged += new System.EventHandler(this.n_txtBox_TextChanged);
             // 
             // label3
             // 
@@ -210,8 +200,20 @@
             this.result_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.result_lbl.Location = new System.Drawing.Point(85, 219);
             this.result_lbl.Name = "result_lbl";
-            this.result_lbl.Size = new System.Drawing.Size(164, 31);
+            this.result_lbl.Size = new System.Drawing.Size(0, 31);
             this.result_lbl.TabIndex = 7;
+            // 
+            // rightBrackets
+            // 
+            this.rightBrackets.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.rightBrackets.AutoSize = true;
+            this.rightBrackets.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.rightBrackets.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rightBrackets.Location = new System.Drawing.Point(213, 55);
+            this.rightBrackets.Name = "rightBrackets";
+            this.rightBrackets.Size = new System.Drawing.Size(36, 110);
+            this.rightBrackets.TabIndex = 4;
+            this.rightBrackets.Text = "⎤\r\n⎦\r\n";
             // 
             // Form1
             // 
@@ -222,7 +224,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.n_txtBox);
             this.Controls.Add(this.rightBrackets);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.resultRightBrackets);
             this.Controls.Add(this.rightBrackets2);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.leftBrackets2);
@@ -250,13 +252,13 @@
         private System.Windows.Forms.Label leftBrackets;
         private System.Windows.Forms.Label leftBrackets2;
         private System.Windows.Forms.Label rightBrackets2;
-        private System.Windows.Forms.Label rightBrackets;
         private System.Windows.Forms.Label resultLetter_lbl;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label resultRightBrackets;
         private System.Windows.Forms.TextBox n_txtBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label result_lbl;
+        private System.Windows.Forms.Label rightBrackets;
     }
 }
 
