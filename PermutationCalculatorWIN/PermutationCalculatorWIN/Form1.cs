@@ -68,16 +68,6 @@ namespace PermutationCalculatorWIN
                 perm[0, i] = i + 1;
         }
 
-        private string GenerateFirstLine(int n)
-        {
-            string str = string.Empty;
-            for (int i = 0; i < n; i++)
-                str += i + 1 + " ";
-            str += "\n";
-
-            return str;
-        }
-
         private string GenerateFirstLine(string input, int n)
         {
             string str = string.Empty;
@@ -100,7 +90,7 @@ namespace PermutationCalculatorWIN
         {
             for (int i = 0; i < n; i++)
             {
-                result_lbl.Text += result[1, i] + " ";
+                result_txt.Text += result[1, i] + " ";
             }
         }
 
@@ -125,17 +115,17 @@ namespace PermutationCalculatorWIN
                 //Generate the first lines of the permutations:
                 perm1_txtBox.Text = GenerateFirstLine(perm1_txtBox.Text, n);
                 perm2_txtBox.Text = GenerateFirstLine(perm2_txtBox.Text,n);
-                result_lbl.Text = GenerateFirstLine(n);
+                result_txt.Text = GenerateFirstLine(result_txt.Text, n);
 
                 //Scale textboxes:
                 ScaleTextBox(perm1_txtBox, n);
                 ScaleTextBox(perm2_txtBox, n);
-                ScaleTextBox(result_lbl, n);
+                ScaleTextBox(result_txt, n);
 
                 //Adjust right bracket positions, depending on size of textbox
                 MoveRightBracket(rightBrackets, perm1_txtBox);
                 MoveRightBracket(rightBrackets2, perm2_txtBox);
-                MoveRightBracket(resultRightBrackets, result_lbl);
+                MoveRightBracket(resultRightBrackets, result_txt);
             }
         }
 
@@ -159,22 +149,12 @@ namespace PermutationCalculatorWIN
             SetMaxLength(tb);
         }
 
-        private void ScaleTextBox(Label lbl, int n)
-        {
-            Font font = lbl.Font;
-            float fontSize = font.Size;
-
-            lbl.Size = new Size((int)fontSize * n, lbl.Size.Height);
-        }
-
         private void MoveRightBracket(Label bracket, TextBox tb)
         {
-            bracket.Location = new Point(tb.Location.X + tb.Width, bracket.Location.Y);
-        }
-
-        private void MoveRightBracket(Label bracket, Label lbl)
-        {
-            bracket.Location = new Point(lbl.Location.X + lbl.Width - 15, bracket.Location.Y);
+            if (bracket.Name == "resultRightBrackets")
+                bracket.Location = new Point(tb.Location.X + tb.Width - 12, bracket.Location.Y);
+            else
+             bracket.Location = new Point(tb.Location.X + tb.Width, bracket.Location.Y);
         }
 
         //sets the maximum length of the textbox depending on the length of the permutation
@@ -184,6 +164,14 @@ namespace PermutationCalculatorWIN
             int spaceCount = n * 2;
             int digitCount = n * 2;
             tb.MaxLength = spaceCount + digitCount + 1; //+1 for the new line char
+        }
+
+        private void CaluclateInverse(int[,] perm, int n, int[,] result)
+        {
+            for (int i = 0; i < n; i++)
+            {
+
+            }
         }
     }
 }
