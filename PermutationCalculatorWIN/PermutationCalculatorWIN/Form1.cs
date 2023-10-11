@@ -5,6 +5,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -77,6 +78,24 @@ namespace PermutationCalculatorWIN
             return str;
         }
 
+        private string GenerateFirstLine(string input, int n)
+        {
+            string str = string.Empty;
+
+            for (int i = 0; i < n; i++)
+                str += i + 1 + " ";
+            str += "\r\n";
+
+            int newLineIndex = input.IndexOf('\n');
+            string line2 = input.Substring(newLineIndex + 1);
+            if (!string.IsNullOrEmpty(line2))
+            {
+                str += line2 + " ";
+            }
+
+            return str;
+        }
+
         private void OutputPerm(int[,] result, int n)
         {
             for (int i = 0; i < n; i++)
@@ -104,8 +123,8 @@ namespace PermutationCalculatorWIN
             {
                 n = int.Parse(n_txtBox.Text);
                 //Generate the first lines of the permutations:
-                perm1_txtBox.Text = GenerateFirstLine(n);
-                perm2_txtBox.Text = GenerateFirstLine(n);
+                perm1_txtBox.Text = GenerateFirstLine(perm1_txtBox.Text, n);
+                perm2_txtBox.Text = GenerateFirstLine(perm2_txtBox.Text,n);
                 result_lbl.Text = GenerateFirstLine(n);
 
                 //Scale textboxes:
@@ -162,7 +181,7 @@ namespace PermutationCalculatorWIN
         //in order to avoid a longer input on the 2nd line
         private void SetMaxLength(TextBox tb)
         {
-            int spaceCount = n * 2 - 1;
+            int spaceCount = n * 2;
             int digitCount = n * 2;
             tb.MaxLength = spaceCount + digitCount + 1; //+1 for the new line char
         }
