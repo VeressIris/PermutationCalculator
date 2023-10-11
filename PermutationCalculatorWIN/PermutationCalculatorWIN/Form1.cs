@@ -28,7 +28,7 @@ namespace PermutationCalculatorWIN
             int[,] result = new int[2, n];
             GetPermutation(a, perm1_txtBox.Text, n);
             GetPermutation(b, perm2_txtBox.Text, n);
-            
+
             Multiply(a, b, n, result);
             OutputPerm(result, n);
         }
@@ -88,6 +88,8 @@ namespace PermutationCalculatorWIN
 
         private void OutputPerm(int[,] result, int n)
         {
+            result_txt.Text = string.Empty;
+            result_txt.Text = GenerateFirstLine(result_txt.Text, n);
             for (int i = 0; i < n; i++)
             {
                 result_txt.Text += result[1, i] + " ";
@@ -97,7 +99,7 @@ namespace PermutationCalculatorWIN
         //!can get rid of later!
         //private void printPerm(int[,] perm)
         //{
-        //    for (int i = 0; i <  perm.GetLength(0); i++)
+        //    for (int i = 0; i < perm.GetLength(0); i++)
         //    {
         //        for (int j = 0; j < perm.GetLength(1); j++)
         //        {
@@ -170,8 +172,20 @@ namespace PermutationCalculatorWIN
         {
             for (int i = 0; i < n; i++)
             {
-
+                //again unfortunate variable names
+                int ind = LinearSearch(perm, 1, n, i + 1);
+                result[1, i] = perm[0, ind];
             }
+        }
+
+        private int LinearSearch(int[,] a, int i, int n, int val)
+        {
+            for (int j = 0; j < n; j++)
+            {
+                if (a[i, j] == val)
+                    return j;
+            }
+            return -1;
         }
     }
 }
